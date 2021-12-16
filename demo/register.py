@@ -239,6 +239,7 @@ if __name__ == "__main__":
 	cv2.imshow('Orthographic view', matchImgOrtho)
 	cv2.imshow('Perspective view', matchImg)
 	cv2.waitKey()
+	cv2.destroyAllWindows()
 
 	srcPts = convertPts(srcPts)
 	trgPts = convertPts(trgPts)
@@ -254,7 +255,7 @@ if __name__ == "__main__":
 
 	corr = get3dCor(srcIdx, trgIdx)
 
-	p2p = o3d.registration.TransformationEstimationPointToPoint()
+	p2p = o3d.pipelines.registration.TransformationEstimationPointToPoint()
 	trans_init = p2p.compute_transformation(srcCld, trgCld, o3d.utility.Vector2iVector(corr))
 	print("Transformation matrix: \n", trans_init)
 

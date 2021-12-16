@@ -8,6 +8,7 @@ from PIL import Image
 import math
 from tqdm import tqdm
 import cv2
+import pdb
 
 
 sys.path.append("../../")
@@ -209,6 +210,7 @@ if __name__ == "__main__":
 
 	focalX, focalY, centerX, centerY, scalingFactor = readCamera(camera_file)
 
+	print(rgb_csv)
 	df_rgb = pd.read_csv(rgb_csv)
 	df_dep = pd.read_csv(depth_csv)
 
@@ -233,7 +235,9 @@ if __name__ == "__main__":
 			trgImg = trgH.replace('.npy', '.jpg')
 
 			if args.model_rord:
-				srcPts, trgPts, matchImg = getPerspKeypoints(srcImg, trgImg, srcH, trgH, model2, device)
+				# res = getPerspKeypoints(srcImg, trgImg, srcH, trgH, model2, device)
+				# pdb.set_trace()
+				srcPts, trgPts, matchImg, _ = getPerspKeypoints(srcImg, trgImg, srcH, trgH, model2, device)
 			elif args.model_d2:
 				srcPts, trgPts, matchImg = getPerspKeypoints(srcImg, trgImg, srcH, trgH, model1, device)
 			elif args.model_ens:
@@ -254,8 +258,14 @@ if __name__ == "__main__":
 			srcPts = convertPts(srcPts)
 			trgPts = convertPts(trgPts)
 
-			depth_name_src = os.path.dirname(os.path.dirname(args.dataset)) + '/' + dep_q
-			depth_name_trg = os.path.dirname(os.path.dirname(args.dataset)) + '/' + dep_d[1][1]
+			# depth_name_src = os.path.dirname(os.path.dirname(args.dataset)) + '/' + dep_q
+			# depth_name_trg = os.path.dirname(os.path.dirname(args.dataset)) + '/' + dep_d[1][1]
+
+			depth_name_src = args.dataset + args.sequence + '/depth/' + dep_q
+			depth_name_trg = args.dataset + args.sequence + '/depth/' + dep_d[1][1]
+			
+			# args_dataset = args.dataset
+			# pdb.set_trace()
 
 			srcCld, srcIdx, srcCor = getPointCloud(srcImg, depth_name_src, srcPts)
 			trgCld, trgIdx, trgCor = getPointCloud(trgImg, depth_name_trg, trgPts)
@@ -268,7 +278,7 @@ if __name__ == "__main__":
 
 			corr = get3dCor(srcIdx, trgIdx)
 
-			p2p = o3d.registration.TransformationEstimationPointToPoint()
+			p2p = o3d.pipelines.registration.TransformationEstimationPointToPoint()
 			trans_init = p2p.compute_transformation(srcCld, trgCld, o3d.utility.Vector2iVector(corr))
 			# print(trans_init)
 			filter_list.append(trans_init)
