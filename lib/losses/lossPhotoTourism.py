@@ -211,9 +211,11 @@ def drawTraining(image1, image2, pos1, pos2, batch, idx_in_batch, output, save=F
 	im2 = cv2.cvtColor(im2, cv2.COLOR_BGR2RGB)
 
 	for i in range(0, pos1_aux.shape[1], 5):
-		im1 = cv2.circle(im1, (pos1_aux[1, i], pos1_aux[0, i]), 1, (0, 0, 255), 2)
+		# print(f"pos1_aux (0, 1): {pos1_aux[0, i]}, {pos1_aux[1, i]}")
+		# print(f"im1: {type(im1)}, pos1_aux (0, 1): {type(pos1_aux[0, i])}, {type(pos1_aux[1, i])}")
+		im1 = cv2.circle(im1, (int(pos1_aux[1, i]), int(pos1_aux[0, i])), 1, (0, 0, 255), 2)
 	for i in range(0, pos2_aux.shape[1], 5):
-		im2 = cv2.circle(im2, (pos2_aux[1, i], pos2_aux[0, i]), 1, (0, 0, 255), 2)
+		im2 = cv2.circle(im2, (int(pos2_aux[1, i]), int(pos2_aux[0, i])), 1, (0, 0, 255), 2)
 
 	im3 = cv2.hconcat([im1, im2])
 

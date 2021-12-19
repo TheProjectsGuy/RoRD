@@ -3,7 +3,6 @@ from sys import exit, argv
 import csv
 import random
 
-import joblib
 import numpy as np
 import cv2
 from PIL import Image
