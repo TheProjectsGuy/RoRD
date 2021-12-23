@@ -7,6 +7,8 @@ Rotation-Robust Descriptors and Orthographic Views for Local Feature Matching
 
 <img src="assets/teaser2.jpg" alt="pipeline" width="1000" height="220" /> 
 
+This repository is a fork of [UditSinghParihar/RoRD](https://github.com/UditSinghParihar/RoRD). Please see [add_README.md](./add_README.md) for extra notes.
+
 ## Evaluation and Datasets
 
 - **MMA** : Training on [PhotoTourism](https://www.cs.ubc.ca/~kmyi/imw2020/data.html) and testing on [HPatches](https://github.com/hpatches/hpatches-dataset) and proposed [Rotated HPatches](https://drive.google.com/file/d/1yrxChlq1XdH-fmTPmmiIzRlJlfO_EPW0/view?usp=sharing)

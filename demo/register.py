@@ -72,8 +72,8 @@ parser.add_argument(
 args = parser.parse_args()
 
 if args.model_ens: # Change default paths accordingly for ensemble
-	model1_ens = '../../models/rord.pth'
-	model2_ens = '../../models/d2net.pth'
+	model1_ens = './../models/rord.pth'
+	model2_ens = './../models/d2net.pth'
 
 def draw_registration_result(source, target, transformation):
 	source_temp = copy.deepcopy(source)
@@ -221,9 +221,9 @@ if __name__ == "__main__":
 	model2 = D2Net(model_file=args.model_rord)
 	model2 = model2.to(device)
 
-	if args.model_rord:
+	if args.model_rord and not args.model_ens:
 		srcPts, trgPts, matchImg, matchImgOrtho = getPerspKeypoints(args.rgb1, args.rgb2, srcH, trgH, model2, device)
-	elif args.model_d2:
+	elif args.model_d2 and not args.model_ens:
 		srcPts, trgPts, matchImg, matchImgOrtho = getPerspKeypoints(args.rgb1, args.rgb2, srcH, trgH, model1, device)
 	elif args.model_ens:
 		model1 = D2Net(model_file=model1_ens)

@@ -10,3 +10,6 @@ checkpoints/
 evaluation/DiverseView/out/
 *.pcd
 tests/
+
+# Additional README
+!add_README.md
