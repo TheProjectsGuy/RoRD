@@ -46,6 +46,7 @@ These explore the code in-depth: code execution, sample scripts, parallels from 
 
 - Main link to the `Understanding` folder on [my OneDrive](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/avneesh_mishra_research_iiit_ac_in/Etblr7dQRJpBgQLTGFpY72oBIsBh6FI18fYebaBsjiPJdg?e=863i9d) (IIIT-Hyderabad CAS login required): The folder contains all the material described above (except the `Resources` described below)
 - Resources folder on [my OneDrive](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/avneesh_mishra_research_iiit_ac_in/EnIRBjM3lOlEvKrhSe4wOP4BO85c6gMCX3ppLOerOM2FKQ?e=Y3hcO7) (IIITH CAS login required): The folder contains the outputs (of training), starting model (D2-Net and RoRD), the DiverseView dataset, and the subset of `brandenburg_gate` useful for training. This was last updated on 23 Dec 2021.
+- Some utility scripts (and initial research work of Udit) on D2-Net can be found at [UditSinghParihar/d2-net](https://github.com/UditSinghParihar/d2-net).
 
 ## Credits
 
