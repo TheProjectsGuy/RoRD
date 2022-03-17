@@ -261,8 +261,14 @@ if __name__ == "__main__":
 			# depth_name_src = os.path.dirname(os.path.dirname(args.dataset)) + '/' + dep_q
 			# depth_name_trg = os.path.dirname(os.path.dirname(args.dataset)) + '/' + dep_d[1][1]
 
-			depth_name_src = args.dataset + args.sequence + '/depth/' + dep_q
-			depth_name_trg = args.dataset + args.sequence + '/depth/' + dep_d[1][1]
+			# print(f"dep_q: {dep_q}")
+			# print(f"dep_d[1][1]: {dep_d[1][1]}")
+			# raise NotImplementedError("Hold")
+			dep_q_file = os.path.basename(dep_q)
+			dep_d11_file = os.path.basename(dep_d[1][1])
+
+			depth_name_src = args.dataset + args.sequence + '/depth/' + dep_q_file
+			depth_name_trg = args.dataset + args.sequence + '/depth/' + dep_d11_file
 			
 			# args_dataset = args.dataset
 			# pdb.set_trace()
